@@ -13,4 +13,8 @@ public interface BrandService {
      * @return
      */
     List<Brand> findAll();
+
+    void save(Brand brand);
+
+    void update(Brand brand);
 }
