@@ -1,15 +1,26 @@
 package com.pinyougou.pojo;
 
+import javax.persistence.*;
+import java.util.List;
+
 /**
  * Specification 实体类
  * @date 2019-03-28 21:08:06
  * @version 1.0
  */
+@Table(name = "tb_specification")
 public class Specification implements java.io.Serializable{
 
+
 	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
+	@Column(name = "spec_name")
 	private String specName;
+	@Transient //表示不是表中的列
+	private List<SpecificationOption> specificationOptions;
 
 	/** setter and getter method */
 	public void setId(Long id){
@@ -25,4 +36,11 @@ public class Specification implements java.io.Serializable{
 		return this.specName;
 	}
 
+	public List<SpecificationOption> getSpecificationOptions() {
+		return specificationOptions;
+	}
+
+	public void setSpecificationOptions(List<SpecificationOption> specificationOptions) {
+		this.specificationOptions = specificationOptions;
+	}
 }

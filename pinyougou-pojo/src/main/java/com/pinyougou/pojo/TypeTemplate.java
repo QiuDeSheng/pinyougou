@@ -1,17 +1,27 @@
 package com.pinyougou.pojo;
 
+import javax.persistence.*;
+
 /**
  * TypeTemplate 实体类
  * @date 2019-03-28 21:08:06
  * @version 1.0
  */
+@Table(name = "tb_type_template")
 public class TypeTemplate implements java.io.Serializable{
 
 	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column
 	private Long id;
+	@Column
 	private String name;
+	@Column(name = "spec_ids")
 	private String specIds;
+	@Column(name = "brand_ids")
 	private String brandIds;
+	@Column(name = "custom_attribute_items")
 	private String customAttributeItems;
 
 	/** setter and getter method */
