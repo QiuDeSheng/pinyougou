@@ -5,4 +5,33 @@
 
 <mapper namespace="com.pinyougou.mapper.SellerMapper">
 
+	<!--多条件查询商家-->
+	<select id="findAll" resultType="Seller">
+		select * from tb_seller
+		<where>
+			<if test="name!=null and name!=''">
+				and name like concat("%",#{name},"%")
+			</if>
+
+			<if test="nickName!=null and nickName!=''">
+				and nick_name like concat("%",#{nickName},"%")
+			</if>
+
+			<if test="status!=null and status!=''">
+				and status = #{status}
+			</if>
+		</where>
+	</select>
+
+	<update id="updateStatus" >
+		update  tb_seller
+		 <if test="status!=null and status!=''">
+			 set status = #{status}
+		 </if>
+		 <where>
+			 <if test="sellerId != null and sellerId!=''">
+				 seller_id = #{sellerId}
+			 </if>
+		 </where>
+	</update>
 </mapper>
